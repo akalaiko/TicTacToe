@@ -24,6 +24,10 @@
 		AFB8721E283D66C70010D824 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB8721C283D66C70010D824 /* Main.storyboard */; };
 		AFB87220283D66CA0010D824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB8721F283D66CA0010D824 /* Assets.xcassets */; };
 		AFB87223283D66CA0010D824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB87221283D66CA0010D824 /* LaunchScreen.storyboard */; };
+		AFFCF0B0283FBE87004435E5 /* Referee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0AF283FBE87004435E5 /* Referee.swift */; };
+		AFFCF0B2283FC13B004435E5 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0B1283FC13B004435E5 /* GameState.swift */; };
+		AFFCF0B5283FC1B7004435E5 /* PlayerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0B4283FC1B7004435E5 /* PlayerInputState.swift */; };
+		AFFCF0B7283FC8F0004435E5 /* gameEndedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0B6283FC8F0004435E5 /* gameEndedState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		AFB8721F283D66CA0010D824 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFB87222283D66CA0010D824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFB87224283D66CA0010D824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFFCF0AF283FBE87004435E5 /* Referee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referee.swift; sourceTree = "<group>"; };
+		AFFCF0B1283FC13B004435E5 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		AFFCF0B4283FC1B7004435E5 /* PlayerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputState.swift; sourceTree = "<group>"; };
+		AFFCF0B6283FC8F0004435E5 /* gameEndedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameEndedState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 			children = (
 				AF69A211283D7C70007428F0 /* AvatarView.swift */,
 				AF69A213283D810D007428F0 /* UIColor extension.swift */,
+				AFFCF0AF283FBE87004435E5 /* Referee.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -103,6 +112,7 @@
 			children = (
 				AFB8721A283D66C70010D824 /* MainMenu.swift */,
 				AF69A22C283D9A65007428F0 /* GameViewController.swift */,
+				AFFCF0B3283FC13F004435E5 /* State */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -129,9 +139,9 @@
 				AFB8722A283D67320010D824 /* Fundamentals */,
 				AF69A217283D9098007428F0 /* Utilities */,
 				AFB8722B283D67470010D824 /* Storyboards */,
+				AF69A228283D9220007428F0 /* Views */,
 				AF69A218283D90B4007428F0 /* Models */,
 				AF69A229283D9230007428F0 /* View Controllers */,
-				AF69A228283D9220007428F0 /* Views */,
 				AFB8721F283D66CA0010D824 /* Assets.xcassets */,
 				AFB87224283D66CA0010D824 /* Info.plist */,
 			);
@@ -154,6 +164,16 @@
 				AFB87221283D66CA0010D824 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AFFCF0B3283FC13F004435E5 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				AFFCF0B1283FC13B004435E5 /* GameState.swift */,
+				AFFCF0B4283FC1B7004435E5 /* PlayerInputState.swift */,
+				AFFCF0B6283FC8F0004435E5 /* gameEndedState.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,13 +251,17 @@
 				AF69A21A283D90C6007428F0 /* Gameboard.swift in Sources */,
 				AF69A21C283D90E9007428F0 /* GameboardPosition.swift in Sources */,
 				AF69A214283D810D007428F0 /* UIColor extension.swift in Sources */,
+				AFFCF0B5283FC1B7004435E5 /* PlayerInputState.swift in Sources */,
 				AF69A216283D9078007428F0 /* GameboardSize.swift in Sources */,
+				AFFCF0B2283FC13B004435E5 /* GameState.swift in Sources */,
 				AF69A226283D920F007428F0 /* OView.swift in Sources */,
 				AFB8721B283D66C70010D824 /* MainMenu.swift in Sources */,
 				AF69A212283D7C70007428F0 /* AvatarView.swift in Sources */,
+				AFFCF0B7283FC8F0004435E5 /* gameEndedState.swift in Sources */,
 				AFB87217283D66C70010D824 /* AppDelegate.swift in Sources */,
 				AF69A220283D91DF007428F0 /* GameboardView.swift in Sources */,
 				AF69A21E283D90F7007428F0 /* Player.swift in Sources */,
+				AFFCF0B0283FBE87004435E5 /* Referee.swift in Sources */,
 				AFB87219283D66C70010D824 /* SceneDelegate.swift in Sources */,
 				AF69A227283D920F007428F0 /* XView.swift in Sources */,
 				AF69A225283D920F007428F0 /* MarkView.swift in Sources */,

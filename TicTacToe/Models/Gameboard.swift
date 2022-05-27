@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Gameboard {
+public final class Gameboard {
     
     // MARK: - Properties
     
@@ -24,12 +24,16 @@ final class Gameboard {
     }
     
     public func contains(player: Player, at positions: [GameboardPosition]) -> Bool {
+        var number = 0
         for position in positions {
-            guard contains(player: player, at: position) else {
-                return false
-            }
+            guard contains(player: player, at: position) else { return false }
+            number += 1
         }
-        return true
+        if GameboardSize.rows == 3 {
+            return number == 3
+        } else {
+            return number > 3
+        }
     }
     
     public func contains(player: Player, at position: GameboardPosition) -> Bool {

@@ -10,14 +10,10 @@ import UIKit
 
 public class OView: MarkView {
     
-    internal override func updateShapeLayer() {
-        super.updateShapeLayer()
-        let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
-        let radius = 0.3 * min(bounds.width, bounds.height)
-        shapeLayer.path = UIBezierPath(arcCenter: center,
-                                       radius: radius,
-                                       startAngle: 330 * CGFloat.pi / 180,
-                                       endAngle: -30 * CGFloat.pi / 180,
-                                       clockwise: false).cgPath
+    internal override func updateMark() {
+        super.updateMark()
+        let imageView = UIImageView(frame: CGRect(x: bounds.width * 0.1, y: bounds.height * 0.1, width: bounds.width * 0.8, height: bounds.height * 0.8))
+        imageView.image = UIImage(named: "pinkO")
+        addSubview(imageView)
     }
 }

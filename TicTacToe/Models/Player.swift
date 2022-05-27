@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Player: CaseIterable {
+public enum Player: CaseIterable {
     case first
     case second
     
@@ -15,6 +15,15 @@ enum Player: CaseIterable {
         switch self {
         case .first: return .second
         case .second: return .first
+        }
+    }
+    
+    var markViewPrototype: MarkView {
+        switch self {
+        case .first:
+            return XView()
+        case .second:
+            return OView()
         }
     }
 }
