@@ -26,7 +26,7 @@ public final class Gameboard {
     public func contains(player: Player, at positions: [GameboardPosition]) -> Bool {
         var number = 0
         for position in positions {
-            guard contains(player: player, at: position) else { return false }
+            guard containsAtExactPosition(player: player, at: position) else { return false }
             number += 1
         }
         if GameboardSize.rows == 3 {
@@ -36,7 +36,17 @@ public final class Gameboard {
         }
     }
     
-    public func contains(player: Player, at position: GameboardPosition) -> Bool {
+    public func howManyTimesContains(player: Player, at positions: [GameboardPosition]) -> Int {
+        var number = 0
+        for position in positions {
+            if containsAtExactPosition(player: player, at: position) {
+                number += 1
+            }
+        }
+        return number
+    }
+    
+    public func containsAtExactPosition(player: Player, at position: GameboardPosition) -> Bool {
         let (column, row) = (position.column, position.row)
         return positions[column][row] == player
     }

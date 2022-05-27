@@ -39,7 +39,7 @@ final class GameViewController: UIViewController {
     }
     
     private let gameboard = Gameboard()
-    private lazy var referee = Referee(gameboard: gameboard)
+    lazy var referee = Referee(gameboard: gameboard)
     private var currentState: GameState! {
         didSet {
             currentState.begin()

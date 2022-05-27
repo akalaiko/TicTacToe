@@ -14,14 +14,15 @@ public final class Referee {
     
     public let gameboard: Gameboard
     
-    public private(set) lazy var winningCombinations: [[GameboardPosition]] = {
+//    public private(set) lazy
+    var winningCombinations: [[GameboardPosition]] {
         var winningCombinations: [[GameboardPosition]] = []
         generateWinsByColumn(result: &winningCombinations)
         generateWinsByRow(result: &winningCombinations)
         generateWinLeftDiagonal(result: &winningCombinations)
         generateWinRightDiagonal(result: &winningCombinations)
         return winningCombinations
-    }()
+    }
     
     // MARK: - Init
     
