@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsView" customModule="TicTacToe" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="IXx-YO-ei7"/>
+                <outlet property="fieldSizeSegmentedControl" destination="K04-qF-sV5" id="heH-jC-Rxf"/>
+                <outlet property="markPlacementModeSegmentedControl" destination="sce-tP-nPx" id="lLy-Gm-KGb"/>
+                <outlet property="playerOneNameTextField" destination="L7m-Cr-uYl" id="SiL-rq-823"/>
+                <outlet property="playerTwoNameTextField" destination="KNp-NM-gOA" id="amZ-LB-1jR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVE-Hk-z30">
+                    <rect key="frame" x="145" y="44" width="124.5" height="34.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On 3x3 you need 3 in a row to win. On 7x7 you need 4." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="on9-UP-2B3">
+                    <rect key="frame" x="73" y="276.5" width="268" height="14"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER #1 Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5F-yt-UXC">
+                    <rect key="frame" x="150" y="98.5" width="114" height="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER #2 Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="369-iQ-Fny">
+                    <rect key="frame" x="150" y="155.5" width="114" height="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field size:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-fu-5YK">
+                    <rect key="frame" x="175.5" y="222.5" width="63.5" height="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark placement mode:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-w1-hDJ">
+                    <rect key="frame" x="133.5" y="305.5" width="147" height="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K04-qF-sV5">
+                    <rect key="frame" x="103.5" y="245.5" width="207" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="K04-qF-sV5" secondAttribute="height" multiplier="8:1" id="AkE-YV-hP1"/>
+                    </constraints>
+                    <segments>
+                        <segment title="3x3"/>
+                        <segment title="7x7"/>
+                    </segments>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sce-tP-nPx">
+                    <rect key="frame" x="103.5" y="328.5" width="207" height="26.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="sce-tP-nPx" secondAttribute="height" multiplier="8:1" id="fqU-Vu-bdU"/>
+                    </constraints>
+                    <segments>
+                        <segment title="1 by 1"/>
+                        <segment title="5 by 5"/>
+                    </segments>
+                </segmentedControl>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLAYER #1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7m-Cr-uYl">
+                    <rect key="frame" x="62" y="121.5" width="290" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="L7m-Cr-uYl" secondAttribute="height" multiplier="10:1" id="cP3-Ho-wHh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLAYER #2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNp-NM-gOA">
+                    <rect key="frame" x="62" y="178.5" width="290" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KNp-NM-gOA" secondAttribute="height" multiplier="10:1" id="6vH-3f-VTH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ic5-xF-qVw">
+                    <rect key="frame" x="62" y="359" width="290" height="41"/>
+                    <string key="text">Choose game mode: 1 mark per move or 5. Marks will be placed in order you put them player by player. You can step on other player's mark, it will override it.</string>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-dK-BxE">
+                    <rect key="frame" x="103.5" y="425" width="207" height="34.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Cdc-dK-BxE" secondAttribute="height" multiplier="6:1" id="Tyz-tI-AOc"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="tinted" title="PLAY" cornerStyle="large">
+                        <backgroundConfiguration key="background" strokeWidth="4">
+                            <color key="backgroundColor" red="0.44313728810000003" green="0.59607845540000004" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </backgroundConfiguration>
+                        <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="playButtonPressed:" destination="-1" eventType="touchUpInside" id="RFN-jU-Eeh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq3-AK-aEy">
+                    <rect key="frame" x="103.5" y="464.5" width="207" height="34.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lq3-AK-aEy" secondAttribute="height" multiplier="6:1" id="ps1-x9-bfH"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="tinted" title="BACK" cornerStyle="large">
+                        <backgroundConfiguration key="background" strokeWidth="4">
+                            <color key="backgroundColor" red="0.83529412749999998" green="0.48627454040000001" blue="0.60392159219999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </backgroundConfiguration>
+                        <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="7Ak-Js-Hff"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.92156863209999995" green="0.89803922179999995" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="KB3-w1-hDJ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="0am-Ln-jd3"/>
+                <constraint firstItem="K04-qF-sV5" firstAttribute="top" secondItem="peZ-fu-5YK" secondAttribute="bottom" constant="5" id="0fG-qC-qXb"/>
+                <constraint firstItem="L7m-Cr-uYl" firstAttribute="top" secondItem="k5F-yt-UXC" secondAttribute="bottom" constant="5" id="1UV-rc-xEv"/>
+                <constraint firstItem="K04-qF-sV5" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="1jD-xe-twx"/>
+                <constraint firstItem="on9-UP-2B3" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2K6-0P-efC"/>
+                <constraint firstItem="TVE-Hk-z30" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="46f-JS-RXB"/>
+                <constraint firstItem="KNp-NM-gOA" firstAttribute="width" secondItem="L7m-Cr-uYl" secondAttribute="width" id="8fK-MZ-C8u"/>
+                <constraint firstItem="KNp-NM-gOA" firstAttribute="centerX" secondItem="369-iQ-Fny" secondAttribute="centerX" id="A9r-HD-s4Y"/>
+                <constraint firstItem="Cdc-dK-BxE" firstAttribute="top" secondItem="Ic5-xF-qVw" secondAttribute="bottom" constant="25" id="APY-bn-8Aq"/>
+                <constraint firstItem="on9-UP-2B3" firstAttribute="top" secondItem="K04-qF-sV5" secondAttribute="bottom" constant="5" id="BV3-9z-GYw"/>
+                <constraint firstItem="peZ-fu-5YK" firstAttribute="top" secondItem="KNp-NM-gOA" secondAttribute="bottom" constant="15" id="C3K-31-CfQ"/>
+                <constraint firstItem="Cdc-dK-BxE" firstAttribute="width" secondItem="sce-tP-nPx" secondAttribute="width" id="CXX-vU-Muw"/>
+                <constraint firstItem="KNp-NM-gOA" firstAttribute="top" secondItem="369-iQ-Fny" secondAttribute="bottom" constant="5" id="DB4-BR-uG6"/>
+                <constraint firstItem="k5F-yt-UXC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IBX-yv-6ef"/>
+                <constraint firstItem="peZ-fu-5YK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="MfQ-6i-Zen"/>
+                <constraint firstItem="sce-tP-nPx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="NIT-uq-JWP"/>
+                <constraint firstItem="Ic5-xF-qVw" firstAttribute="top" secondItem="sce-tP-nPx" secondAttribute="bottom" constant="5" id="PLR-LF-v30"/>
+                <constraint firstItem="L7m-Cr-uYl" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Pji-xc-W3B"/>
+                <constraint firstItem="369-iQ-Fny" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="QgX-W0-HY2"/>
+                <constraint firstItem="TVE-Hk-z30" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Qw0-4p-UJN"/>
+                <constraint firstItem="Cdc-dK-BxE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RtF-uP-sUN"/>
+                <constraint firstItem="sce-tP-nPx" firstAttribute="top" secondItem="KB3-w1-hDJ" secondAttribute="bottom" constant="5" id="UsK-8L-l62"/>
+                <constraint firstItem="k5F-yt-UXC" firstAttribute="top" secondItem="TVE-Hk-z30" secondAttribute="bottom" constant="20" id="aZ2-L2-hRS"/>
+                <constraint firstItem="KB3-w1-hDJ" firstAttribute="top" secondItem="on9-UP-2B3" secondAttribute="bottom" constant="15" id="bsP-jE-AhU"/>
+                <constraint firstItem="lq3-AK-aEy" firstAttribute="width" secondItem="Cdc-dK-BxE" secondAttribute="width" id="iSD-ya-DJO"/>
+                <constraint firstItem="lq3-AK-aEy" firstAttribute="top" secondItem="Cdc-dK-BxE" secondAttribute="bottom" constant="5" id="noM-iJ-njK"/>
+                <constraint firstItem="Ic5-xF-qVw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="nuR-Qr-dDs"/>
+                <constraint firstItem="K04-qF-sV5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="qmm-5H-kGr"/>
+                <constraint firstItem="369-iQ-Fny" firstAttribute="top" secondItem="L7m-Cr-uYl" secondAttribute="bottom" constant="5" id="r5d-O8-e9b"/>
+                <constraint firstItem="lq3-AK-aEy" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="rN5-j1-s3a"/>
+                <constraint firstItem="L7m-Cr-uYl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="xSm-IH-foy"/>
+                <constraint firstItem="sce-tP-nPx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="y0g-WB-zoT"/>
+                <constraint firstItem="Ic5-xF-qVw" firstAttribute="width" secondItem="KNp-NM-gOA" secondAttribute="width" id="yuf-oP-36D"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lq3-AK-aEy" secondAttribute="bottom" constant="30" id="zar-bj-xC4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="259.82142857142856"/>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="PXr-S5-TNu">
+            <rect key="frame" x="0.0" y="0.0" width="207" height="34.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+            <state key="normal" title="Button">
+                <attributedString key="attributedTitle">
+                    <fragment content="WITH FRIEND">
+                        <attributes>
+                            <font key="NSFont" size="12" name="AvenirNext-Bold"/>
+                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                        </attributes>
+                    </fragment>
+                </attributedString>
+            </state>
+            <buttonConfiguration key="configuration" style="tinted" title="BACK" cornerStyle="large">
+                <backgroundConfiguration key="background" strokeWidth="5">
+                    <color key="backgroundColor" red="0.92156863209999995" green="0.89803922179999995" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </backgroundConfiguration>
+                <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
+            </buttonConfiguration>
+            <point key="canvasLocation" x="-162" y="514"/>
+        </button>
+    </objects>
+</document>

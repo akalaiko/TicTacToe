@@ -9,16 +9,25 @@ import UIKit
 
 final class GameViewController: UIViewController {
     
-    @IBOutlet var playerOneName: UILabel!
+    @IBOutlet var playerOneName: UILabel! {
+        didSet {
+            playerOneName.text = Game.shared.playerOneName
+        }
+    }
     @IBOutlet var playerOneScoreLabel: UILabel!
     @IBOutlet var playerOneCurrentMark: UIImageView!
-    @IBOutlet var playerTwoName: UILabel!
+    @IBOutlet var playerTwoName: UILabel!{
+        didSet {
+            playerTwoName.text = Game.shared.playerTwoName
+        }
+    }
     @IBOutlet var playerTwoScoreLabel: UILabel!
     @IBOutlet var playerTwoCurrentMark: UIImageView!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var gameboardView: GameboardView!
     
     @IBAction func backToMainButtonPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func restartMatchButtonPressed(_ sender: Any) {
         
@@ -34,6 +43,16 @@ final class GameViewController: UIViewController {
     private var currentState: GameState! {
         didSet {
             currentState.begin()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if let playerInputState = self.currentState as? PlayerInputState {
+                    if playerInputState.player == .computer {
+                        self.currentState.addAIMark()
+                        if self.currentState.isCompleted {
+                            self.goToNextState()
+                        }
+                    }
+                }
+            })
         }
     }
     var playerOneScore = 0 {
@@ -50,16 +69,29 @@ final class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         goToFirstState()
         
         gameboardView.onSelectPosition = { [weak self] position in
             guard let self = self else { return }
-            self.currentState.addMark(at: position)
-            if self.currentState.isCompleted {
-                self.goToNextState()
+            if let playerInputState = self.currentState as? PlayerInputState {
+                if playerInputState.player != .computer {
+                    self.currentState.addMark(at: position)
+                    if self.currentState.isCompleted {
+                        self.goToNextState()
+                    }
+                }
             }
         }
+    }
+    
+    private func checkIfNoMoreMoves() -> Bool {
+        var result = true
+        gameboard.positions.forEach { column in
+            if column.contains(nil) {
+                result = false
+            }
+        }
+        return result
     }
     
     private func goToFirstState() {
@@ -77,6 +109,8 @@ final class GameViewController: UIViewController {
             return
         }
         
+        guard !checkIfNoMoreMoves() else { return currentState = gameEndedState(winner: nil, gameViewController: self) }
+        
         if let playerInputState = currentState as? PlayerInputState {
             let player = playerInputState.player.next
             currentState = PlayerInputState(player: player,
@@ -84,5 +118,6 @@ final class GameViewController: UIViewController {
                                             gameboard: gameboard,
                                             gameboardView: gameboardView, markViewPrototype: player.markViewPrototype)
         }
+        
     }
 }

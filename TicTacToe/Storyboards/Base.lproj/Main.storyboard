@@ -60,10 +60,10 @@
                                     <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="rOc-KA-MOc" kind="show" id="vii-Zq-WgM"/>
+                                    <action selector="playButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m3f-Hz-7gc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRL-d9-oDV">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRL-d9-oDV">
                                 <rect key="frame" x="103.5" y="619.5" width="207" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rRL-d9-oDV" secondAttribute="height" multiplier="6:1" id="fV1-Ic-d9N"/>
@@ -87,6 +87,9 @@
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="playButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HQF-RR-kcX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by Tim Kalaiko" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNo-nx-wwd">
                                 <rect key="frame" x="142.5" y="845.5" width="129.5" height="16.5"/>
@@ -94,11 +97,16 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-KJ-xLN" customClass="SettingsView" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="221.5" width="331" height="432.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.92156863209999995" green="0.89803922179999995" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ahM-Et-L26" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3Sf-Nv-reb"/>
+                            <constraint firstItem="U9x-KJ-xLN" firstAttribute="bottom" secondItem="rRL-d9-oDV" secondAttribute="bottom" id="5CU-fw-GKe"/>
                             <constraint firstItem="hhb-gY-Q5z" firstAttribute="width" secondItem="XQy-zR-DPh" secondAttribute="width" id="5Md-Pk-hWv"/>
                             <constraint firstItem="lNo-nx-wwd" firstAttribute="centerX" secondItem="rRL-d9-oDV" secondAttribute="centerX" id="8qs-kY-3w2"/>
                             <constraint firstItem="ahM-Et-L26" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="8s7-IZ-Snd"/>
@@ -109,14 +117,21 @@
                             <constraint firstItem="XQy-zR-DPh" firstAttribute="centerX" secondItem="ahM-Et-L26" secondAttribute="centerX" id="YH6-MF-R5r"/>
                             <constraint firstItem="XQy-zR-DPh" firstAttribute="width" secondItem="ahM-Et-L26" secondAttribute="width" id="e2Q-TW-EqX"/>
                             <constraint firstItem="rRL-d9-oDV" firstAttribute="width" secondItem="hhb-gY-Q5z" secondAttribute="width" id="hue-wR-y72"/>
+                            <constraint firstItem="U9x-KJ-xLN" firstAttribute="top" secondItem="ahM-Et-L26" secondAttribute="top" id="i5J-2c-G7h"/>
                             <constraint firstItem="hhb-gY-Q5z" firstAttribute="top" secondItem="bFz-Ma-hti" secondAttribute="bottom" constant="5" id="iH0-HA-6U8"/>
                             <constraint firstItem="rRL-d9-oDV" firstAttribute="top" secondItem="hhb-gY-Q5z" secondAttribute="bottom" constant="5" id="jGj-b6-VvR"/>
+                            <constraint firstItem="U9x-KJ-xLN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ndC-DW-Pis"/>
                             <constraint firstItem="bFz-Ma-hti" firstAttribute="top" secondItem="XQy-zR-DPh" secondAttribute="bottom" constant="50" id="uwQ-1C-YhO"/>
                             <constraint firstItem="bFz-Ma-hti" firstAttribute="centerX" secondItem="XQy-zR-DPh" secondAttribute="centerX" id="vzQ-KI-bpg"/>
                             <constraint firstItem="rRL-d9-oDV" firstAttribute="centerX" secondItem="hhb-gY-Q5z" secondAttribute="centerX" id="xcK-eL-QrP"/>
+                            <constraint firstItem="U9x-KJ-xLN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="z5F-Ka-2cy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2TQ-IX-39Y"/>
+                    <connections>
+                        <outlet property="settingsView" destination="U9x-KJ-xLN" id="AFW-4G-K2C"/>
+                        <segue destination="rOc-KA-MOc" kind="show" identifier="goToGame" id="TsI-pv-1ts"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -379,6 +394,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

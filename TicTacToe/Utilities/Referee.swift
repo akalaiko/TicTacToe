@@ -170,7 +170,6 @@ public final class Referee {
             }
             winsByLeftDiagonal.append(contentsOf: array)
         }
-        print(winsByLeftDiagonal)
         result.append(contentsOf: winsByLeftDiagonal)
     }
     
@@ -180,7 +179,7 @@ public final class Referee {
         if GameboardSize.columns == 3 {
             var array: [GameboardPosition] = []
             for i in 0 ..< GameboardSize.rows {
-                array.append(GameboardPosition(column: GameboardSize.rows - 1 - i, row: GameboardSize.rows - 1 - i))
+                array.append(GameboardPosition(column: GameboardSize.rows - 1 - i, row: i))
             }
             winsByRightDiagonal.append(array)
             
@@ -223,7 +222,6 @@ public final class Referee {
             }
             winsByRightDiagonal.append(contentsOf: array)
         }
-        print(winsByRightDiagonal)
         result.append(contentsOf: winsByRightDiagonal)
     }
     
