@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF0A4F2028425A4A00C3BB2D /* StepInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */; };
+		AF0A4F2228425A7A00C3BB2D /* StepCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */; };
 		AF69A212283D7C70007428F0 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A211283D7C70007428F0 /* AvatarView.swift */; };
 		AF69A214283D810D007428F0 /* UIColor extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A213283D810D007428F0 /* UIColor extension.swift */; };
 		AF69A216283D9078007428F0 /* GameboardSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A215283D9078007428F0 /* GameboardSize.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepInvoker.swift; sourceTree = "<group>"; };
+		AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCommand.swift; sourceTree = "<group>"; };
 		AF69A211283D7C70007428F0 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AF69A213283D810D007428F0 /* UIColor extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor extension.swift"; sourceTree = "<group>"; };
 		AF69A215283D9078007428F0 /* GameboardSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardSize.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 		AFB8720A283D66C70010D824 = {
 			isa = PBXGroup;
 			children = (
+				AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */,
+				AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */,
 				AFB87215283D66C70010D824 /* TicTacToe */,
 				AFB87214283D66C70010D824 /* Products */,
 			);
@@ -283,11 +289,13 @@
 				AF69A216283D9078007428F0 /* GameboardSize.swift in Sources */,
 				AFFCF0BE2840D681004435E5 /* StepMode.swift in Sources */,
 				AFFCF0BC2840D652004435E5 /* Mode.swift in Sources */,
+				AF0A4F2228425A7A00C3BB2D /* StepCommand.swift in Sources */,
 				AFFCF0B2283FC13B004435E5 /* GameState.swift in Sources */,
 				AF69A226283D920F007428F0 /* OView.swift in Sources */,
 				AFB8721B283D66C70010D824 /* MainMenu.swift in Sources */,
 				AF69A212283D7C70007428F0 /* AvatarView.swift in Sources */,
 				AFFCF0B7283FC8F0004435E5 /* gameEndedState.swift in Sources */,
+				AF0A4F2028425A4A00C3BB2D /* StepInvoker.swift in Sources */,
 				AFB87217283D66C70010D824 /* AppDelegate.swift in Sources */,
 				AF69A220283D91DF007428F0 /* GameboardView.swift in Sources */,
 				AF69A21E283D90F7007428F0 /* Player.swift in Sources */,

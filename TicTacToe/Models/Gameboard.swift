@@ -36,6 +36,11 @@ public final class Gameboard {
         }
     }
     
+    public func contains(at position: GameboardPosition) -> Bool{
+        let (column, row) = (position.column, position.row)
+        return positions[column][row] != nil
+    }
+    
     public func howManyTimesContains(player: Player, at positions: [GameboardPosition]) -> Int {
         var number = 0
         for position in positions {

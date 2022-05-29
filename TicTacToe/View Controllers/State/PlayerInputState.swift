@@ -11,7 +11,7 @@ class PlayerInputState: GameState {
     
     var isCompleted: Bool = false
     var player: Player
-    weak var gameViewController: GameViewController?
+    var gameViewController: GameViewController?
     weak var gameboard: Gameboard?
     weak var gameboardView: GameboardView?
     let markViewPrototype: MarkView
@@ -30,6 +30,7 @@ class PlayerInputState: GameState {
     }
     
     func begin() {
+        
         switch player {
         case .first:
             gameViewController?.infoLabel.text = "\(Game.shared.playerOneName), it's your turn!"
@@ -37,7 +38,6 @@ class PlayerInputState: GameState {
         case .second:
             gameViewController?.infoLabel.text = "\(Game.shared.playerTwoName), it's your turn!"
             gameViewController?.infoLabel.textColor = .amazingBrandedPinkColor
-//        default: return
         case .computer:
             gameViewController?.infoLabel.text = "COMPUTER's turn!"
             gameViewController?.infoLabel.textColor = .amazingBrandedPinkColor
@@ -46,13 +46,44 @@ class PlayerInputState: GameState {
     
     func addMark(at position: GameboardPosition) {
         guard let gameboardView = gameboardView,
-                  gameboardView.canPlaceMarkView(at: position) else {
+              let gameboard = gameboard
+//                  gameboardView.canPlaceMarkView(at: position)
+        else {
             return
         }
-        
-        gameboard?.setPlayer(player, at: position)
-        gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
-        isCompleted = true
+        if Game.shared.stepMode == .fivePerMove {
+            guard
+//                !gameboard.containsAtExactPosition(player: player, at: position),
+                  !gameboardView.temporaryMarksPositions.contains(position) else { return }
+            let command = StepCommand(
+                position: position,
+                player: player,
+                gameboard: gameboard,
+                gameboardView: gameboardView,
+                markViewPrototype: markViewPrototype
+            )
+            gameboardView.removeMarkView(at: position)
+            gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
+            gameboardView.temporaryMarksPositions.append(position)
+            gameViewController?.stepInvoker?.addCommand(command)
+            
+//            gameboard.setPlayer(player, at: position)
+//            if let commandsCount = gameViewController?.stepInvoker?.commandsCount() {
+//                if commandsCount % 5 != 0 {
+//                    gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
+//                    gameboardView.temporaryMarksPositions.append(position)
+//                }
+//            }
+            print("command added")
+        } else {
+            guard gameboardView.canPlaceMarkView(at: position) else { return }
+            gameboard.setPlayer(player, at: position)
+            gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
+        }
+        if let commandsCount = gameViewController?.stepInvoker?.commandsCount() {
+            if commandsCount % 5 == 0 { isCompleted = true }
+        }
+        print(isCompleted)
     }
     
     func addAIMark() {

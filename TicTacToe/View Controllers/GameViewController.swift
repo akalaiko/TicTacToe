@@ -38,21 +38,20 @@ final class GameViewController: UIViewController {
         goToFirstState()
     }
     
+    var stepInvoker: StepInvoker?
     private let gameboard = Gameboard()
     lazy var referee = Referee(gameboard: gameboard)
-    private var currentState: GameState! {
+    var currentState: GameState! {
         didSet {
             currentState.begin()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                if let playerInputState = self.currentState as? PlayerInputState {
-                    if playerInputState.player == .computer {
-                        self.currentState.addAIMark()
-                        if self.currentState.isCompleted {
-                            self.goToNextState()
-                        }
-                    }
+            switch Game.shared.stepMode {
+            case .fivePerMove:
+                for _ in 0..<5 {
+                    aiMove()
                 }
-            })
+            case .onePerMove:
+                aiMove()
+            }
         }
     }
     var playerOneScore = 0 {
@@ -69,8 +68,13 @@ final class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.stepInvoker = StepInvoker(source: self, gameboard: gameboard)
         goToFirstState()
-        
+        setGameboardViewInitialState()
+        gameboardView.boardBeforeMoves = gameboardView.markViewForPosition
+    }
+    
+    private func setGameboardViewInitialState() {
         gameboardView.onSelectPosition = { [weak self] position in
             guard let self = self else { return }
             if let playerInputState = self.currentState as? PlayerInputState {
@@ -82,6 +86,17 @@ final class GameViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    func setFirstPlayerStep() {
+        currentState = PlayerInputState(
+            player: playerToStart,
+            gameViewController: self,
+            gameboard: gameboard,
+            gameboardView: gameboardView,
+            markViewPrototype: playerToStart.markViewPrototype
+        )
     }
     
     private func checkIfNoMoreMoves() -> Bool {
@@ -101,6 +116,8 @@ final class GameViewController: UIViewController {
                                         gameboard: gameboard,
                                         gameboardView: gameboardView,
                                         markViewPrototype: player.markViewPrototype)
+        gameboardView.clear()
+        gameboard.clear()
     }
     
     private func goToNextState() {
@@ -109,15 +126,43 @@ final class GameViewController: UIViewController {
             return
         }
         
-        guard !checkIfNoMoreMoves() else { return currentState = gameEndedState(winner: nil, gameViewController: self) }
-        
-        if let playerInputState = currentState as? PlayerInputState {
-            let player = playerInputState.player.next
-            currentState = PlayerInputState(player: player,
-                                            gameViewController: self,
-                                            gameboard: gameboard,
-                                            gameboardView: gameboardView, markViewPrototype: player.markViewPrototype)
+        switch Game.shared.stepMode {
+        case .onePerMove:
+            guard !checkIfNoMoreMoves() else { return currentState = gameEndedState(winner: nil, gameViewController: self) }
+            
+            if let playerInputState = currentState as? PlayerInputState {
+                let player = playerInputState.player.next
+                currentState = PlayerInputState(player: player,
+                                                gameViewController: self,
+                                                gameboard: gameboard,
+                                                gameboardView: gameboardView,
+                                                markViewPrototype: player.markViewPrototype)
+            }
+        case .fivePerMove:
+            guard let stepInvoker = stepInvoker else { return }
+            if let playerInputState = currentState as? PlayerInputState {
+                if stepInvoker.commandsCount() % 5 == 0 {
+                    let player = playerInputState.player.next
+                    currentState = PlayerInputState(player: player,
+                                                    gameViewController: self,
+                                                    gameboard: gameboard,
+                                                    gameboardView: gameboardView,
+                                                    markViewPrototype: player.markViewPrototype)
+                }
+            }
         }
-        
+    }
+    
+    private func aiMove() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            if let playerInputState = self.currentState as? PlayerInputState {
+                if playerInputState.player == .computer {
+                    self.currentState.addAIMark()
+                    if self.currentState.isCompleted {
+                        self.goToNextState()
+                    }
+                }
+            }
+        })
     }
 }
