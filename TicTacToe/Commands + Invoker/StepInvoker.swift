@@ -11,6 +11,7 @@ class StepInvoker {
     var commands: [StepCommand] = [] {
         didSet {
             guard let source = source else { return }
+            source.infoLabel.isHidden = false
             if commands.count == 0 { source.gameboardView.boardBeforeMoves = source.gameboardView.markViewForPosition }
         }
     }
@@ -45,18 +46,19 @@ class StepInvoker {
 
         if commands.count == 5 { cleanUp() }
         if commands.count == 10 {
+            source.infoLabel.isHidden = true
             cleanUp()
             
             source.gameboardView.boardBeforeMoves = [:]
             
             for index in 0..<5 {
                 guard !checkWinner() else { return clear()}
-                commands[index].execute(delay: Double(index))
+                commands[index].execute(delay: Double(index)/2)
                 guard !checkWinner() else { return clear()}
-                commands[index + 5].execute(delay: Double(index) + 0.5)
+                commands[index + 5].execute(delay: Double(index)/2 + 0.2)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
                 self.clear()
             }
         }

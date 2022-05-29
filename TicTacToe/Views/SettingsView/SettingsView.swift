@@ -23,6 +23,10 @@ class SettingsView: UIView, SettingsViewDelegate {
         goToGame()
     }
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        playerOneNameTextField.text = nil
+        playerTwoNameTextField.text = nil
+        playerTwoNameTextField.isEnabled = false
+        self.isHidden = true
     }
     
     override init(frame: CGRect) {

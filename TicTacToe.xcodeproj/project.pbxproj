@@ -10,7 +10,7 @@
 		AF0A4F2028425A4A00C3BB2D /* StepInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */; };
 		AF0A4F2228425A7A00C3BB2D /* StepCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */; };
 		AF69A212283D7C70007428F0 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A211283D7C70007428F0 /* AvatarView.swift */; };
-		AF69A214283D810D007428F0 /* UIColor extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A213283D810D007428F0 /* UIColor extension.swift */; };
+		AF69A214283D810D007428F0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A213283D810D007428F0 /* UIColorExtension.swift */; };
 		AF69A216283D9078007428F0 /* GameboardSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A215283D9078007428F0 /* GameboardSize.swift */; };
 		AF69A21A283D90C6007428F0 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A219283D90C6007428F0 /* Gameboard.swift */; };
 		AF69A21C283D90E9007428F0 /* GameboardPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69A21B283D90E9007428F0 /* GameboardPosition.swift */; };
@@ -41,7 +41,7 @@
 		AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepInvoker.swift; sourceTree = "<group>"; };
 		AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCommand.swift; sourceTree = "<group>"; };
 		AF69A211283D7C70007428F0 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		AF69A213283D810D007428F0 /* UIColor extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor extension.swift"; sourceTree = "<group>"; };
+		AF69A213283D810D007428F0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AF69A215283D9078007428F0 /* GameboardSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardSize.swift; sourceTree = "<group>"; };
 		AF69A219283D90C6007428F0 /* Gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameboard.swift; sourceTree = "<group>"; };
 		AF69A21B283D90E9007428F0 /* GameboardPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardPosition.swift; sourceTree = "<group>"; };
@@ -90,11 +90,21 @@
 			path = "Commands + Invoker";
 			sourceTree = "<group>";
 		};
+		AF0A4F2628441A5400C3BB2D /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				AFFCF0BF2840E326004435E5 /* SettingsView.swift */,
+				AFFCF0C32840ED80004435E5 /* SettingsView.xib */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		AF69A217283D9098007428F0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AF69A211283D7C70007428F0 /* AvatarView.swift */,
-				AF69A213283D810D007428F0 /* UIColor extension.swift */,
+				AFFCF0BB2840D652004435E5 /* Mode.swift */,
+				AFFCF0BD2840D681004435E5 /* StepMode.swift */,
+				AF69A213283D810D007428F0 /* UIColorExtension.swift */,
 				AFFCF0AF283FBE87004435E5 /* Referee.swift */,
 			);
 			path = Utilities;
@@ -125,9 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				AF69A221283D920F007428F0 /* MarkViews */,
+				AF0A4F2628441A5400C3BB2D /* SettingsView */,
 				AF69A21F283D91DF007428F0 /* GameboardView.swift */,
-				AFFCF0BF2840E326004435E5 /* SettingsView.swift */,
-				AFFCF0C32840ED80004435E5 /* SettingsView.xib */,
+				AF69A211283D7C70007428F0 /* AvatarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,7 +147,6 @@
 			children = (
 				AFB8721A283D66C70010D824 /* MainMenu.swift */,
 				AF69A22C283D9A65007428F0 /* GameViewController.swift */,
-				AFFCF0B3283FC13F004435E5 /* State */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -145,7 +154,6 @@
 		AFB8720A283D66C70010D824 = {
 			isa = PBXGroup;
 			children = (
-				AF0A4F2528440DBF00C3BB2D /* Commands + Invoker */,
 				AFB87215283D66C70010D824 /* TicTacToe */,
 				AFB87214283D66C70010D824 /* Products */,
 			);
@@ -164,15 +172,15 @@
 			children = (
 				AFB8722A283D67320010D824 /* Fundamentals */,
 				AFFCF0B82840D602004435E5 /* Singleton */,
+				AF0A4F2528440DBF00C3BB2D /* Commands + Invoker */,
 				AF69A217283D9098007428F0 /* Utilities */,
 				AFB8722B283D67470010D824 /* Storyboards */,
 				AF69A228283D9220007428F0 /* Views */,
 				AF69A218283D90B4007428F0 /* Models */,
+				AFFCF0B3283FC13F004435E5 /* State */,
 				AF69A229283D9230007428F0 /* View Controllers */,
 				AFB8721F283D66CA0010D824 /* Assets.xcassets */,
 				AFB87224283D66CA0010D824 /* Info.plist */,
-				AFFCF0BB2840D652004435E5 /* Mode.swift */,
-				AFFCF0BD2840D681004435E5 /* StepMode.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -288,7 +296,7 @@
 				AF69A22D283D9A65007428F0 /* GameViewController.swift in Sources */,
 				AF69A21A283D90C6007428F0 /* Gameboard.swift in Sources */,
 				AF69A21C283D90E9007428F0 /* GameboardPosition.swift in Sources */,
-				AF69A214283D810D007428F0 /* UIColor extension.swift in Sources */,
+				AF69A214283D810D007428F0 /* UIColorExtension.swift in Sources */,
 				AFFCF0B5283FC1B7004435E5 /* PlayerInputState.swift in Sources */,
 				AF69A216283D9078007428F0 /* GameboardSize.swift in Sources */,
 				AFFCF0BE2840D681004435E5 /* StepMode.swift in Sources */,

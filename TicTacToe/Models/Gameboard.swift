@@ -36,7 +36,7 @@ public final class Gameboard {
         }
     }
     
-    public func contains(at position: GameboardPosition) -> Bool{
+    public func containsAnything(at position: GameboardPosition) -> Bool {
         let (column, row) = (position.column, position.row)
         return positions[column][row] != nil
     }

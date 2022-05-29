@@ -352,9 +352,12 @@
                     <connections>
                         <outlet property="gameboardView" destination="8sU-1O-Tpg" id="yLj-EW-mEe"/>
                         <outlet property="infoLabel" destination="1ig-1v-5G8" id="nkQ-mE-oOg"/>
+                        <outlet property="nextRoundButton" destination="yHZ-gU-CJu" id="8yI-YH-qZJ"/>
+                        <outlet property="playerOneAvatar" destination="cS4-Vr-4vu" id="oS0-vx-toT"/>
                         <outlet property="playerOneCurrentMark" destination="gDz-3m-D2M" id="wMj-0u-5GE"/>
                         <outlet property="playerOneName" destination="3yB-EY-ROC" id="xbe-Wc-N46"/>
                         <outlet property="playerOneScoreLabel" destination="FGX-UM-g3G" id="sIE-3a-eAh"/>
+                        <outlet property="playerTwoAvatar" destination="Evm-hZ-G9P" id="382-Em-suz"/>
                         <outlet property="playerTwoCurrentMark" destination="cJg-PT-8mc" id="Yv1-MT-60J"/>
                         <outlet property="playerTwoName" destination="blX-OT-HLu" id="DuB-F5-6tw"/>
                         <outlet property="playerTwoScoreLabel" destination="UlC-ln-wyK" id="kHb-BD-Huw"/>

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// needs refactoring
+
 public final class Referee {
     
     // MARK: - Properties
@@ -21,6 +23,7 @@ public final class Referee {
         generateWinRightDiagonal(result: &winningCombinations)
         return winningCombinations
     }
+    private var fieldSize = Game.shared.fieldSize
     
     // MARK: - Init
     
@@ -40,101 +43,64 @@ public final class Referee {
     // MARK: - Private
     
     private func generateWinsByColumn(result: inout [[GameboardPosition]]) {
-        var winsByColumns: [[GameboardPosition]] = []
-        if GameboardSize.columns == 3 {
-            for column in 0 ..< GameboardSize.columns {
+        if fieldSize == 3 {
+            for column in 0 ..< fieldSize {
                 var array: [GameboardPosition] = []
-                for row in 0 ..< GameboardSize.rows {
+                for row in 0 ..< fieldSize {
                     array.append(GameboardPosition(column: column, row: row))
                 }
-                winsByColumns.append(array)
+                result.append(array)
             }
-            result.append(contentsOf: winsByColumns)
-        } else if GameboardSize.columns == 7 {
-            for column in 0 ..< GameboardSize.columns {
+        } else if fieldSize == 7 {
+            for column in 0 ..< fieldSize {
                 var array: [GameboardPosition] = []
-                for row in 0 ..< GameboardSize.rows - 3 {
-                    array.append(GameboardPosition(column: column, row: row))
+                for j in 0...3 {
+                    for row in j ..< fieldSize - (3 - j) {
+                        array.append(GameboardPosition(column: column, row: row))
+                    }
+                    result.append(array)
+                    array = []
                 }
-                winsByColumns.append(array)
-                array = []
-                for row in 1 ..< GameboardSize.rows - 2 {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByColumns.append(array)
-                array = []
-                for row in 2 ..< GameboardSize.rows - 1 {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByColumns.append(array)
-                array = []
-                for row in 3 ..< GameboardSize.rows {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByColumns.append(array)
-                array = []
             }
-            print(winsByColumns.count)
-            print(winsByColumns)
-            result.append(contentsOf: winsByColumns)
         }
     }
     
     private func generateWinsByRow(result: inout [[GameboardPosition]]) {
-        var winsByRows: [[GameboardPosition]] = []
-        if GameboardSize.rows == 3 {
-            for row in 0 ..< GameboardSize.rows {
+        if fieldSize == 3 {
+            for row in 0 ..< fieldSize {
                 var array: [GameboardPosition] = []
-                for column in 0 ..< GameboardSize.columns {
+                for column in 0 ..< fieldSize {
                     array.append(GameboardPosition(column: column, row: row))
                 }
-                winsByRows.append(array)
+                result.append(array)
             }
-            result.append(contentsOf: winsByRows)
-        } else if GameboardSize.rows == 7 {
-            for row in 0 ..< GameboardSize.rows {
+        } else if fieldSize == 7 {
+            for row in 0 ..< fieldSize {
                 var array: [GameboardPosition] = []
-                for column in 0 ..< GameboardSize.columns - 3 {
-                    array.append(GameboardPosition(column: column, row: row))
+                for j in 0...3 {
+                    for column in j ..< fieldSize - (3 - j) {
+                        array.append(GameboardPosition(column: column, row: row))
+                    }
+                    result.append(array)
+                    array = []
                 }
-                winsByRows.append(array)
-                array = []
-                for column in 1 ..< GameboardSize.columns - 2 {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByRows.append(array)
-                array = []
-                for column in 2 ..< GameboardSize.columns - 1 {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByRows.append(array)
-                array = []
-                for column in 3 ..< GameboardSize.columns {
-                    array.append(GameboardPosition(column: column, row: row))
-                }
-                winsByRows.append(array)
-                array = []
             }
-            result.append(contentsOf: winsByRows)
         }
     }
 
     
     private func generateWinLeftDiagonal(result: inout [[GameboardPosition]]) {
-//        guard GameboardSize.columns == GameboardSize.rows else { return }
         var winsByLeftDiagonal: [[GameboardPosition]] = []
-        if GameboardSize.columns == 3 {
+        if fieldSize == 3 {
             var array: [GameboardPosition] = []
-            for i in 0 ..< GameboardSize.columns {
+            for i in 0 ..< fieldSize {
                 array.append(GameboardPosition(column: i, row: i))
             }
-            winsByLeftDiagonal.append(array)
-            
+            result.append(array)
         } else if GameboardSize.rows == 7 {
-            
             var array: [[GameboardPosition]] = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: i, row: i))
                 array[1].append(GameboardPosition(column: i, row: i + 1))
                 array[2].append(GameboardPosition(column: i, row: i + 2))

@@ -7,14 +7,15 @@
 import UIKit
 
 // MARK: - GameboardView
+
 public class GameboardView: UIView {
     
     // MARK: - Public Properties
     
     public var onSelectPosition: ((GameboardPosition) -> Void)?
     public var markViewForPosition: [GameboardPosition: MarkView] = [:]
-    var temporaryMarksPositions: [GameboardPosition] = []
-    var boardBeforeMoves: [ GameboardPosition : MarkView ] = [:]
+    public var temporaryMarksPositions: [GameboardPosition] = []
+    public var boardBeforeMoves: [ GameboardPosition : MarkView ] = [:]
     
     // MARK: - Constants
     
@@ -41,11 +42,6 @@ public class GameboardView: UIView {
         markViewForPosition = [:]
     }
     
-    public func clearAll() {
-        clear()
-        boardBeforeMoves = [:]
-    }
-    
     public func canPlaceMarkView(at position: GameboardPosition) -> Bool {
         return markViewForPosition[position] == nil
     }
@@ -58,9 +54,7 @@ public class GameboardView: UIView {
     }
     
     public func removeMarkView(at position: GameboardPosition) {
-        guard let markView = markViewForPosition[position] else {
-            return
-        }
+        guard let markView = markViewForPosition[position] else { return }
         markViewForPosition[position] = nil
         markView.removeFromSuperview()
     }
@@ -147,4 +141,3 @@ public class GameboardView: UIView {
                                                            dy: 0.5 * Constants.lineWidth)
     }
 }
-import Foundation

@@ -30,9 +30,16 @@ class MainMenu: UIViewController, SettingsViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        settingsView.playerOneNameTextField.text = nil
+        settingsView.playerTwoNameTextField.text = nil
+        settingsView.playerTwoNameTextField.isEnabled = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsView.delegate = self
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

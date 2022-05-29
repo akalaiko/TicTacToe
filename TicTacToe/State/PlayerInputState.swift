@@ -33,10 +33,10 @@ class PlayerInputState: GameState {
         
         switch player {
         case .first:
-            gameViewController?.infoLabel.text = "\(Game.shared.playerOneName), it's your turn!"
+            gameViewController?.infoLabel.text = "\(Game.shared.playerOneName.uppercased()), it's your turn!"
             gameViewController?.infoLabel.textColor = .amazingBrandedBlueColor
         case .second:
-            gameViewController?.infoLabel.text = "\(Game.shared.playerTwoName), it's your turn!"
+            gameViewController?.infoLabel.text = "\(Game.shared.playerTwoName.uppercased()), it's your turn!"
             gameViewController?.infoLabel.textColor = .amazingBrandedPinkColor
         case .computer:
             gameViewController?.infoLabel.text = "COMPUTER's turn!"
@@ -47,7 +47,7 @@ class PlayerInputState: GameState {
     func addMark(at position: GameboardPosition) {
         guard let gameboardView = gameboardView,
               let gameboard = gameboard
-//                  gameboardView.canPlaceMarkView(at: position)
+
         else {
             return
         }
@@ -64,7 +64,6 @@ class PlayerInputState: GameState {
             gameboardView.removeMarkView(at: position)
             gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
             gameboardView.temporaryMarksPositions.append(position)
-            print("command adding")
             gameViewController?.stepInvoker?.addCommand(command)
             
             
@@ -76,7 +75,6 @@ class PlayerInputState: GameState {
         if let commandsCount = gameViewController?.stepInvoker?.commands.count {
             if commandsCount % 5 == 0 { isCompleted = true }
         }
-        print(isCompleted)
     }
     
     func addAIMark() {
@@ -268,7 +266,8 @@ class PlayerInputState: GameState {
         default: return
         }
     
-        // if there is nothing to block, for 3x3 let's take diagonals (makes 3*3 ai unbeatable)
+        // this one makes 3*3 ai unbeatable
+        // if there is nothing to block, for 3x3 let's take diagonals
         
 //        if numberOfMarksToWin == 3 {
 //            var diagonalPositions: [GameboardPosition] {
@@ -293,12 +292,8 @@ class PlayerInputState: GameState {
 //            }
 //        }
         
-        
-        
         // if there is nothing to block, try to improve our best line
-        
-        
-        
+        // (for future updates)
         
         // if there is no good move let's go randomly
         addAIMarkRandomly()

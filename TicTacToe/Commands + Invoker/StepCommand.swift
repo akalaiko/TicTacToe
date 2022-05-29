@@ -33,7 +33,7 @@ class StepCommand: Command {
     
     func execute(delay: Double) {
         guard let gameboardView = gameboardView, let gameboard = gameboard else { return }
-        if !gameboard.contains(at: position) {
+        if !gameboard.containsAnything(at: position) {
             gameboard.setPlayer(self.player, at: self.position)
             DispatchQueue.main.asyncAfter(deadline: .now() + delay ) {
                 gameboardView.placeMarkView(self.markViewPrototype.copy(), at: self.position)

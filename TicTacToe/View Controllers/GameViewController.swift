@@ -11,26 +11,53 @@ final class GameViewController: UIViewController {
     
     @IBOutlet var playerOneName: UILabel! {
         didSet {
-            playerOneName.text = Game.shared.playerOneName
+            playerOneName.text = Game.shared.playerOneName.uppercased()
         }
     }
     @IBOutlet var playerOneScoreLabel: UILabel!
     @IBOutlet var playerOneCurrentMark: UIImageView!
+    @IBOutlet var playerOneAvatar: AvatarImage!{
+        didSet {
+            playerOneAvatar.image = UIImage(named: "\(Int.random(in: 1...12))")
+        }
+    }
+    @IBOutlet var playerTwoAvatar: AvatarImage!{
+        didSet {
+            if Game.shared.playerTwoName == "COMPUTER" {
+                playerTwoAvatar.image = UIImage(named: "robot")
+            } else {
+                playerTwoAvatar.image = UIImage(named: "\(Int.random(in: 1...12))")
+            }
+        }
+    }
     @IBOutlet var playerTwoName: UILabel!{
         didSet {
-            playerTwoName.text = Game.shared.playerTwoName
+            playerTwoName.text = Game.shared.playerTwoName.uppercased()
         }
     }
     @IBOutlet var playerTwoScoreLabel: UILabel!
     @IBOutlet var playerTwoCurrentMark: UIImageView!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var gameboardView: GameboardView!
+    @IBOutlet var nextRoundButton: UIButton!
     
-    @IBAction func backToMainButtonPressed(_ sender: Any) { navigationController?.popViewController(animated: true) }
-    @IBAction func restartMatchButtonPressed(_ sender: Any) { }
+    @IBAction func backToMainButtonPressed(_ sender: Any) {
+        let ac = UIAlertController(title: "Are you sure?", message: "Do you really want to exit?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: exitToMainMenu))
+        ac.addAction(UIAlertAction(title: "Nope", style: .cancel, handler: nil))
+        present(ac, animated: true)
+    }
+    
+    @IBAction func restartMatchButtonPressed(_ sender: Any) {
+        let ac = UIAlertController(title: "Are you sure?", message: "Do you really want to restart the whole match?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: restartTheMatch))
+        ac.addAction(UIAlertAction(title: "Nope", style: .cancel, handler: nil))
+        present(ac, animated: true)
+    }
     @IBAction func nextRoundButtonPressed(_ sender: Any) {
         setFirstPlayerStep()
-        gameboardView.clearAll()
+        gameboardView.clear()
+        gameboardView.boardBeforeMoves = [:]
         gameboard.clear()
         stepInvoker?.clear()
     }
@@ -40,10 +67,7 @@ final class GameViewController: UIViewController {
     lazy var referee = Referee(gameboard: gameboard)
     var currentState: GameState! {
         didSet {
-            print("it changed", currentState)
-            print("commands in list", stepInvoker?.commands.count)
             aiNeedsToThink()
-            
         }
     }
     var playerOneScore = 0 {
@@ -60,10 +84,19 @@ final class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        welcomeMessage()
         self.stepInvoker = StepInvoker(source: self, gameboard: gameboard)
         setFirstPlayerStep()
         setGameboardViewInitialState()
         gameboardView.boardBeforeMoves = gameboardView.markViewForPosition
+    }
+    
+    public func matchWon() {
+        let winner = playerOneScore == 5 ? playerOneName.text?.uppercased() : playerTwoName.text?.uppercased()
+        let ac = UIAlertController(title: "Game over", message: "THE WINNER IS: \(winner ?? "") \n Do you want to play one more time?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: restartTheMatch))
+        ac.addAction(UIAlertAction(title: "No", style: .default, handler: exitToMainMenu))
+        present(ac, animated: true)
     }
     
     private func setGameboardViewInitialState() {
@@ -84,8 +117,7 @@ final class GameViewController: UIViewController {
         }
     }
     
-
-    func setFirstPlayerStep() {
+    private func setFirstPlayerStep() {
         currentState = PlayerInputState(
             player: playerToStart,
             gameViewController: self,
@@ -93,6 +125,7 @@ final class GameViewController: UIViewController {
             gameboardView: gameboardView,
             markViewPrototype: playerToStart.markViewPrototype
         )
+        nextRoundButton.isEnabled = false
     }
     
     private func checkIfNoMoreMoves() -> Bool {
@@ -104,17 +137,6 @@ final class GameViewController: UIViewController {
         }
         return result
     }
-    
-//    private func goToFirstState() {
-//        let player = playerToStart
-//        currentState = PlayerInputState(player: player,
-//                                        gameViewController: self,
-//                                        gameboard: gameboard,
-//                                        gameboardView: gameboardView,
-//                                        markViewPrototype: player.markViewPrototype)
-//        gameboardView.clearAll()
-//        gameboard.clear()
-//    }
     
     private func goToNextState() {
         if let winner = referee.determineWinner() {
@@ -148,14 +170,17 @@ final class GameViewController: UIViewController {
         currentState.begin()
         switch Game.shared.stepMode {
         case .fivePerMove:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { [self] in
+            guard let stepInvoker = stepInvoker else { return }
+
+            let delay: Double = stepInvoker.commands.count < 6 ? 3 : 5
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: { [self] in
                 for _ in 0..<5 { aiMove() }
             })
         case .onePerMove: aiMove()
         }
     }
     
-    func setPlayer() {
+    private func setPlayer() {
         if let playerInputState = currentState as? PlayerInputState {
             let player = playerInputState.player.next
             currentState = PlayerInputState(player: player,
@@ -164,5 +189,26 @@ final class GameViewController: UIViewController {
                                             gameboardView: gameboardView,
                                             markViewPrototype: player.markViewPrototype)
         }
+    }
+    
+    private func exitToMainMenu(action: UIAlertAction! = nil) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func welcomeMessage() {
+        let ac = UIAlertController(title: "Let the game begin", message: "First player to get 5 points wins the match. \n Good luck!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Got it!", style: .cancel, handler: nil))
+        present(ac, animated: true)
+    }
+    
+    private func restartTheMatch(action: UIAlertAction! = nil) {
+        playerOneScore = 0
+        playerTwoScore = 0
+        playerToStart = .first
+        setFirstPlayerStep()
+        gameboardView.clear()
+        gameboardView.boardBeforeMoves = [:]
+        gameboard.clear()
+        stepInvoker?.clear()
     }
 }
