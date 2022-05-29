@@ -4,11 +4,12 @@
 //
 //  Created by Tim on 28.05.2022.
 //
+
+import Foundation
+
 protocol Command: AnyObject {
     func execute(delay: Double)
 }
-
-import Foundation
 
 class StepCommand: Command {
     
@@ -31,11 +32,7 @@ class StepCommand: Command {
     }
     
     func execute(delay: Double) {
-        guard
-            let gameboardView = gameboardView,
-            let gameboard = gameboard
-        else { return }
-        
+        guard let gameboardView = gameboardView, let gameboard = gameboard else { return }
         if !gameboard.contains(at: position) {
             gameboard.setPlayer(self.player, at: self.position)
             DispatchQueue.main.asyncAfter(deadline: .now() + delay ) {

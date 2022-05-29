@@ -35,7 +35,6 @@
 		AFFCF0BE2840D681004435E5 /* StepMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0BD2840D681004435E5 /* StepMode.swift */; };
 		AFFCF0C02840E327004435E5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0BF2840E326004435E5 /* SettingsView.swift */; };
 		AFFCF0C42840ED80004435E5 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFCF0C32840ED80004435E5 /* SettingsView.xib */; };
-		AFFCF0C72841235C004435E5 /* ComputerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFCF0C62841235C004435E5 /* ComputerInputState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +68,6 @@
 		AFFCF0BD2840D681004435E5 /* StepMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepMode.swift; sourceTree = "<group>"; };
 		AFFCF0BF2840E326004435E5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AFFCF0C32840ED80004435E5 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
-		AFFCF0C62841235C004435E5 /* ComputerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerInputState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF0A4F2528440DBF00C3BB2D /* Commands + Invoker */ = {
+			isa = PBXGroup;
+			children = (
+				AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */,
+				AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */,
+			);
+			path = "Commands + Invoker";
+			sourceTree = "<group>";
+		};
 		AF69A217283D9098007428F0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +145,7 @@
 		AFB8720A283D66C70010D824 = {
 			isa = PBXGroup;
 			children = (
-				AF0A4F1F28425A4A00C3BB2D /* StepInvoker.swift */,
-				AF0A4F2128425A7A00C3BB2D /* StepCommand.swift */,
+				AF0A4F2528440DBF00C3BB2D /* Commands + Invoker */,
 				AFB87215283D66C70010D824 /* TicTacToe */,
 				AFB87214283D66C70010D824 /* Products */,
 			);
@@ -193,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				AFFCF0B1283FC13B004435E5 /* GameState.swift */,
-				AFFCF0C62841235C004435E5 /* ComputerInputState.swift */,
 				AFFCF0B4283FC1B7004435E5 /* PlayerInputState.swift */,
 				AFFCF0B6283FC8F0004435E5 /* gameEndedState.swift */,
 			);
@@ -281,7 +286,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF69A22D283D9A65007428F0 /* GameViewController.swift in Sources */,
-				AFFCF0C72841235C004435E5 /* ComputerInputState.swift in Sources */,
 				AF69A21A283D90C6007428F0 /* Gameboard.swift in Sources */,
 				AF69A21C283D90E9007428F0 /* GameboardPosition.swift in Sources */,
 				AF69A214283D810D007428F0 /* UIColor extension.swift in Sources */,

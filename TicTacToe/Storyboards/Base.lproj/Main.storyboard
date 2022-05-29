@@ -169,7 +169,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playZone3" translatesAutoresizingMaskIntoConstraints="NO" id="XWi-t8-LId">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playZone" translatesAutoresizingMaskIntoConstraints="NO" id="XWi-t8-LId">
                                 <rect key="frame" x="10.5" y="318.5" width="393" height="393"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XWi-t8-LId" secondAttribute="height" id="jZN-Xz-qw8"/>
@@ -389,7 +389,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="blueX" width="634" height="635"/>
         <image name="pinkO" width="710" height="709"/>
-        <image name="playZone3" width="3615" height="3615"/>
+        <image name="playZone" width="3615" height="3615"/>
         <image name="ttt_logo" width="1067" height="1067"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">

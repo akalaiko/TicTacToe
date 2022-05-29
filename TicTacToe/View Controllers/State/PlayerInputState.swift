@@ -52,9 +52,7 @@ class PlayerInputState: GameState {
             return
         }
         if Game.shared.stepMode == .fivePerMove {
-            guard
-//                !gameboard.containsAtExactPosition(player: player, at: position),
-                  !gameboardView.temporaryMarksPositions.contains(position) else { return }
+            guard !gameboardView.temporaryMarksPositions.contains(position) else { return }
             let command = StepCommand(
                 position: position,
                 player: player,
@@ -62,25 +60,20 @@ class PlayerInputState: GameState {
                 gameboardView: gameboardView,
                 markViewPrototype: markViewPrototype
             )
+            
             gameboardView.removeMarkView(at: position)
             gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
             gameboardView.temporaryMarksPositions.append(position)
+            print("command adding")
             gameViewController?.stepInvoker?.addCommand(command)
             
-//            gameboard.setPlayer(player, at: position)
-//            if let commandsCount = gameViewController?.stepInvoker?.commandsCount() {
-//                if commandsCount % 5 != 0 {
-//                    gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
-//                    gameboardView.temporaryMarksPositions.append(position)
-//                }
-//            }
-            print("command added")
+            
         } else {
             guard gameboardView.canPlaceMarkView(at: position) else { return }
             gameboard.setPlayer(player, at: position)
             gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
         }
-        if let commandsCount = gameViewController?.stepInvoker?.commandsCount() {
+        if let commandsCount = gameViewController?.stepInvoker?.commands.count {
             if commandsCount % 5 == 0 { isCompleted = true }
         }
         print(isCompleted)

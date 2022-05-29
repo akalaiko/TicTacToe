@@ -13,8 +13,6 @@ public final class Referee {
     // MARK: - Properties
     
     public let gameboard: Gameboard
-    
-//    public private(set) lazy
     var winningCombinations: [[GameboardPosition]] {
         var winningCombinations: [[GameboardPosition]] = []
         generateWinsByColumn(result: &winningCombinations)
@@ -34,9 +32,7 @@ public final class Referee {
     
     public func determineWinner() -> Player? {
         for player in Player.allCases {
-            if doesPlayerHaveWinningCombination(player) {
-                return player
-            }
+            if doesPlayerHaveWinningCombination(player) { return player }
         }
         return nil
     }
@@ -78,6 +74,8 @@ public final class Referee {
                 winsByColumns.append(array)
                 array = []
             }
+            print(winsByColumns.count)
+            print(winsByColumns)
             result.append(contentsOf: winsByColumns)
         }
     }
@@ -123,7 +121,7 @@ public final class Referee {
 
     
     private func generateWinLeftDiagonal(result: inout [[GameboardPosition]]) {
-        guard GameboardSize.columns == GameboardSize.rows else { return }
+//        guard GameboardSize.columns == GameboardSize.rows else { return }
         var winsByLeftDiagonal: [[GameboardPosition]] = []
         if GameboardSize.columns == 3 {
             var array: [GameboardPosition] = []
@@ -228,9 +226,7 @@ public final class Referee {
     
     private func doesPlayerHaveWinningCombination(_ player: Player) -> Bool {
         for winningPositions in winningCombinations {
-            if gameboard.contains(player: player, at: winningPositions) {
-                return true
-            }
+            if gameboard.contains(player: player, at: winningPositions) { return true }
         }
         return false
     }

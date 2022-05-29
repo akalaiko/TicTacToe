@@ -41,6 +41,11 @@ public class GameboardView: UIView {
         markViewForPosition = [:]
     }
     
+    public func clearAll() {
+        clear()
+        boardBeforeMoves = [:]
+    }
+    
     public func canPlaceMarkView(at position: GameboardPosition) -> Bool {
         return markViewForPosition[position] == nil
     }

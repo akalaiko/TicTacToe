@@ -25,7 +25,7 @@ class Game {
     private init() {}
     
     func description() -> String{
-        return "fieldSize: \(fieldSize), mode: \(mode)"
+        return "fieldSize: \(fieldSize), mode: \(mode), stepMode: \(stepMode), players: \(playerOneName), \(playerTwoName)"
     }
     
 }
