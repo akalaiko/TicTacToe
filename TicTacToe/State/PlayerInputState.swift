@@ -45,12 +45,7 @@ class PlayerInputState: GameState {
     }
     
     func addMark(at position: GameboardPosition) {
-        guard let gameboardView = gameboardView,
-              let gameboard = gameboard
-
-        else {
-            return
-        }
+        guard let gameboardView = gameboardView, let gameboard = gameboard else { return }
         if Game.shared.stepMode == .fivePerMove {
             guard !gameboardView.temporaryMarksPositions.contains(position) else { return }
             let command = StepCommand(
@@ -65,47 +60,42 @@ class PlayerInputState: GameState {
             gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
             gameboardView.temporaryMarksPositions.append(position)
             gameViewController?.stepInvoker?.addCommand(command)
-            
-            
+        
         } else {
             guard gameboardView.canPlaceMarkView(at: position) else { return }
             gameboard.setPlayer(player, at: position)
             gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
         }
+        
         if let commandsCount = gameViewController?.stepInvoker?.commands.count {
             if commandsCount % 5 == 0 { isCompleted = true }
         }
     }
     
     func addAIMark() {
-        
+        guard let gameboard = gameboard,
+              let gameboardView = gameboardView,
+              let referee = referee
+        else { return }
+  
         var positionOfNextMove: GameboardPosition?
         var numberOfMarksToWin: Int {
-            switch Game.shared.fieldSize {
-            case 3: return 3
-            case 7: return 4
-            default: return 4
-            }
+            return Game.shared.fieldSize == 3 ? 3 : 4
         }
         
         // let's try to get center
         
-        if let gameboard = gameboard {
-            let position = GameboardPosition(column: (GameboardSize.columns - 1) / 2, row: (GameboardSize.columns - 1) / 2)
-            if !gameboard.containsAtExactPosition(player: .computer, at: position) {
-                if let gameboardView = gameboardView {
-                    if gameboardView.canPlaceMarkView(at: position) {
-                        print("i'm gonna place mark in the middle")
-                        addMark(at: position)
-                        return
-                    }
-                }
+        let position = GameboardPosition(column: (GameboardSize.columns - 1) / 2, row: (GameboardSize.columns - 1) / 2)
+        if !gameboard.containsAtExactPosition(player: .computer, at: position) {
+            if gameboardView.canPlaceMarkView(at: position) {
+                print("i'm gonna place mark in the middle")
+                addMark(at: position)
+                return
             }
         }
         
         //setup winning combinations
-        
-        guard let referee = referee else { return }
+
         let winningCombinations = referee.winningCombinations
         
         // check for current combination possibilities
@@ -115,11 +105,9 @@ class PlayerInputState: GameState {
             optimalCombinations[number] = []
         }
         for combination in winningCombinations {
-            if let gameboard = gameboard {
-                let number = gameboard.howManyTimesContains(player: .computer, at: combination)
-                guard optimalCombinations[number] != nil else { return optimalCombinations[number] = [combination] }
-                optimalCombinations[number]!.append(combination)
-            }
+            let number = gameboard.howManyTimesContains(player: .computer, at: combination)
+            guard optimalCombinations[number] != nil else { return optimalCombinations[number] = [combination] }
+            optimalCombinations[number]!.append(combination)
         }
         
         // let's try to win
@@ -128,15 +116,11 @@ class PlayerInputState: GameState {
             print("there might be a chance to win")
             for combination in optimalCombinations[numberOfMarksToWin - 1]! {
                 for position in combination {
-                    if let gameboard = gameboard {
-                        if !gameboard.containsAtExactPosition(player: .computer, at: position) {
-                            if let gameboardView = gameboardView {
-                                if gameboardView.canPlaceMarkView(at: position) {
-                                    print("i'm gonna place mark here: \(position), to complete this combination: \(combination)")
-                                    addMark(at: position)
-                                    return
-                                }
-                            }
+                    if !gameboard.containsAtExactPosition(player: .computer, at: position) {
+                        if gameboardView.canPlaceMarkView(at: position) {
+                            print("i'm gonna place mark here: \(position), to complete this combination: \(combination)")
+                            addMark(at: position)
+                            return
                         }
                     }
                 }
@@ -149,30 +133,26 @@ class PlayerInputState: GameState {
             opponentsCombinations[number] = []
         }
         for combination in winningCombinations {
-            if let gameboard = gameboard {
-                let number = gameboard.howManyTimesContains(player: .first, at: combination)
-                guard opponentsCombinations[number] != nil else { return opponentsCombinations[number] = [combination] }
-                opponentsCombinations[number]!.append(combination)
-            }
+            let number = gameboard.howManyTimesContains(player: .first, at: combination)
+            guard opponentsCombinations[number] != nil else { return opponentsCombinations[number] = [combination] }
+            opponentsCombinations[number]!.append(combination)
         }
         
         // let's see if we can block
         switch numberOfMarksToWin {
         case 4:
             var options: [GameboardPosition] = []
+            var availablePositionIndexes: [Int] = []
+            
             if opponentsCombinations[3] != [] {
                 print("there might be a chance to block")
                 
                 for combination in opponentsCombinations[3]! {
                     for position in combination {
-                        if let gameboard = gameboard {
-                            if !gameboard.containsAtExactPosition(player: .first, at: position) {
-                                if let gameboardView = gameboardView {
-                                    if gameboardView.canPlaceMarkView(at: position) {
-                                        addMark(at: position)
-                                        return
-                                    }
-                                }
+                        if !gameboard.containsAtExactPosition(player: .first, at: position) {
+                            if gameboardView.canPlaceMarkView(at: position) {
+                                addMark(at: position)
+                                return
                             }
                         }
                     }
@@ -188,22 +168,44 @@ class PlayerInputState: GameState {
                 print("there might be a chance to improve")
                 for combination in optimalCombinations[2]! {
                     for position in combination {
-                        if let gameboard = gameboard {
-                            if !gameboard.containsAtExactPosition(player: .computer, at: position) {
-                                if let gameboardView = gameboardView {
-                                    if gameboardView.canPlaceMarkView(at: position) {
-                                        options.append(position)
-                                    }
+                        if !gameboard.containsAtExactPosition(player: .computer, at: position) {
+                            if gameboardView.canPlaceMarkView(at: position) {
+                                options.append(position)
+                                if let index = combination.firstIndex(of: position) {
+                                    availablePositionIndexes.append(index)
                                 }
                             }
                         }
                     }
+
                     if options.count == 2 {
                         print("improving")
-                        addMark(at: options[1])
-                        return
+                        print(options)
+                        print(availablePositionIndexes)
+                        switch availablePositionIndexes {
+                        case [0,1]:
+                            addMark(at: options[1])
+                            return
+                        case [0,2]:
+                            addMark(at: options[1])
+                            return
+                        case [0,3]:
+                            addMark(at: options[0])
+                            return
+                        case [1,2]:
+                            addMark(at: options[1])
+                            return
+                        case [1,3]:
+                            addMark(at: options[1])
+                            return
+                        case [2,3]:
+                            addMark(at: options[0])
+                            return
+                        default: return
+                        }
                     } else {
                         options = []
+                        availablePositionIndexes = []
                     }
                 }
             }
@@ -215,24 +217,44 @@ class PlayerInputState: GameState {
                 
                 for combination in opponentsCombinations[2]! {
                     for position in combination {
-                        if let gameboard = gameboard {
-                            if !gameboard.containsAtExactPosition(player: .first, at: position) {
-                                if let gameboardView = gameboardView {
-                                    if gameboardView.canPlaceMarkView(at: position) {
-                                        options.append(position)
-                                    }
+                        if !gameboard.containsAtExactPosition(player: .first, at: position) {
+                            if gameboardView.canPlaceMarkView(at: position) {
+                                options.append(position)
+                                if let index = combination.firstIndex(of: position) {
+                                    availablePositionIndexes.append(index)
                                 }
                             }
                         }
                     }
-                    if options.count > 1 {
-                        positionOfNextMove = options[options.count - 2]
-                    } else if options.count > 0 {
-                        positionOfNextMove = options[0]
+                    if options.count == 2 {
+                        print("trying to block")
+                        print(options)
+                        print(availablePositionIndexes)
+                        switch availablePositionIndexes {
+                        case [0,1]:
+                            addMark(at: options[1])
+                            return
+                        case [0,2]:
+                            addMark(at: options[1])
+                            return
+                        case [0,3]:
+                            addMark(at: options[0])
+                            return
+                        case [1,2]:
+                            addMark(at: options[1])
+                            return
+                        case [1,3]:
+                            addMark(at: options[1])
+                            return
+                        case [2,3]:
+                            addMark(at: options[0])
+                            return
+                        default: return
+                        }
+                    } else {
+                        options = []
+                        availablePositionIndexes = []
                     }
-                }
-                if let position = positionOfNextMove {
-                    addMark(at: position)
                 }
             }
         case 3:
@@ -242,13 +264,9 @@ class PlayerInputState: GameState {
                 
                 for combination in opponentsCombinations[2]! {
                     for position in combination {
-                        if let gameboard = gameboard {
-                            if !gameboard.containsAtExactPosition(player: .first, at: position) {
-                                if let gameboardView = gameboardView {
-                                    if gameboardView.canPlaceMarkView(at: position) {
-                                        options.append(position)
-                                    }
-                                }
+                        if !gameboard.containsAtExactPosition(player: .first, at: position) {
+                            if gameboardView.canPlaceMarkView(at: position) {
+                                options.append(position)
                             }
                         }
                     }
@@ -279,14 +297,10 @@ class PlayerInputState: GameState {
 //                return array
 //            }
 //            for position in diagonalPositions {
-//                if let gameboard = gameboard {
-//                    if !gameboard.containsAtExactPosition(player: .first, at: position) {
-//                        if let gameboardView = gameboardView {
-//                            if gameboardView.canPlaceMarkView(at: position) {
-//                                addMark(at: position)
-//                                return
-//                            }
-//                        }
+//                if !gameboard.containsAtExactPosition(player: .first, at: position) {
+//                    if gameboardView.canPlaceMarkView(at: position) {
+//                        addMark(at: position)
+//                        return
 //                    }
 //                }
 //            }

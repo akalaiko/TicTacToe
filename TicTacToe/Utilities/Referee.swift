@@ -97,7 +97,7 @@ public final class Referee {
                 array.append(GameboardPosition(column: i, row: i))
             }
             result.append(array)
-        } else if GameboardSize.rows == 7 {
+        } else if fieldSize == 7 {
             var array: [[GameboardPosition]] = [[],[],[],[]]
             
             for i in 0 ..< fieldSize - 3 {
@@ -109,7 +109,7 @@ public final class Referee {
             winsByLeftDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: i + 1, row: i))
                 array[1].append(GameboardPosition(column: i + 1, row: i + 1))
                 array[2].append(GameboardPosition(column: i + 1, row: i + 2))
@@ -118,7 +118,7 @@ public final class Referee {
             winsByLeftDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: i + 2, row: i))
                 array[1].append(GameboardPosition(column: i + 2, row: i + 1))
                 array[2].append(GameboardPosition(column: i + 2, row: i + 2))
@@ -127,7 +127,7 @@ public final class Referee {
             winsByLeftDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: i + 3, row: i))
                 array[1].append(GameboardPosition(column: i + 3, row: i + 1))
                 array[2].append(GameboardPosition(column: i + 3, row: i + 2))
@@ -139,20 +139,19 @@ public final class Referee {
     }
     
     private func generateWinRightDiagonal(result: inout [[GameboardPosition]]) {
-        guard GameboardSize.columns == GameboardSize.rows else { return }
         var winsByRightDiagonal: [[GameboardPosition]] = []
-        if GameboardSize.columns == 3 {
+        if fieldSize == 3 {
             var array: [GameboardPosition] = []
-            for i in 0 ..< GameboardSize.rows {
-                array.append(GameboardPosition(column: GameboardSize.rows - 1 - i, row: i))
+            for i in 0 ..< fieldSize {
+                array.append(GameboardPosition(column: fieldSize - 1 - i, row: i))
             }
             winsByRightDiagonal.append(array)
             
-        } else if GameboardSize.rows == 7 {
+        } else if fieldSize == 7 {
             
             var array: [[GameboardPosition]] = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: GameboardSize.rows - i - 1, row: i))
                 array[1].append(GameboardPosition(column: GameboardSize.rows - i - 1, row: i + 1))
                 array[2].append(GameboardPosition(column: GameboardSize.rows - i - 1, row: i + 2))
@@ -161,7 +160,7 @@ public final class Referee {
             winsByRightDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: GameboardSize.rows - i - 2, row: i))
                 array[1].append(GameboardPosition(column: GameboardSize.rows - i - 2, row: i + 1))
                 array[2].append(GameboardPosition(column: GameboardSize.rows - i - 2, row: i + 2))
@@ -170,7 +169,7 @@ public final class Referee {
             winsByRightDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: GameboardSize.rows - i - 3, row: i))
                 array[1].append(GameboardPosition(column: GameboardSize.rows - i - 3, row: i + 1))
                 array[2].append(GameboardPosition(column: GameboardSize.rows - i - 3, row: i + 2))
@@ -179,7 +178,7 @@ public final class Referee {
             winsByRightDiagonal.append(contentsOf: array)
             array = [[],[],[],[]]
             
-            for i in 0 ..< GameboardSize.rows - 3 {
+            for i in 0 ..< fieldSize - 3 {
                 array[0].append(GameboardPosition(column: GameboardSize.rows - i - 4, row: i))
                 array[1].append(GameboardPosition(column: GameboardSize.rows - i - 4, row: i + 1))
                 array[2].append(GameboardPosition(column: GameboardSize.rows - i - 4, row: i + 2))

@@ -126,6 +126,7 @@ final class GameViewController: UIViewController {
             markViewPrototype: playerToStart.markViewPrototype
         )
         nextRoundButton.isEnabled = false
+        
     }
     
     private func checkIfNoMoreMoves() -> Bool {
