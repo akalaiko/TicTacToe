@@ -4,11 +4,12 @@
 //
 //  Created by Tim on 25.05.2022.
 //
+
 import UIKit
 
 // MARK: - GameboardView
 
-public class GameboardView: UIView {
+final class GameboardView: UIView {
     
     // MARK: - Public Properties
     

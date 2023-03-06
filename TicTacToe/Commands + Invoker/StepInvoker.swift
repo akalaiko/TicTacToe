@@ -16,23 +16,23 @@ class StepInvoker {
         }
     }
     weak var source: GameViewController?
-    let referee: Referee?
+    private let referee: Referee?
     
     init(source: GameViewController, gameboard: Gameboard) {
         self.source = source
         self.referee = Referee(gameboard: gameboard)
     }
     
-    func clear() {
+    public func clear() {
         commands = []
     }
     
-    func addCommand(_ command: StepCommand) {
+    public func addCommand(_ command: StepCommand) {
         commands.append(command)
         executeCommandsIfNeeded()
     }
     
-    func checkWinner() -> Bool {
+    private func checkWinner() -> Bool {
         guard let referee = referee, let source = source else { return false }
         if let winner = referee.determineWinner() {
             source.currentState = gameEndedState(winner: winner, gameViewController: source)
@@ -41,7 +41,7 @@ class StepInvoker {
         return false
     }
     
-    func executeCommandsIfNeeded() {
+    private func executeCommandsIfNeeded() {
         guard let source = source else { return }
 
         if commands.count == 5 { cleanUp() }
@@ -64,7 +64,7 @@ class StepInvoker {
         }
     }
     
-    func cleanUp() {
+    private func cleanUp() {
         guard let source = source else { return }
         source.gameboardView.temporaryMarksPositions = []
         source.gameboardView.clear()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Player: CaseIterable {
+enum Player: CaseIterable {
     case first
     case second
     case computer

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class Gameboard {
+final class Gameboard {
     
     // MARK: - Properties
     

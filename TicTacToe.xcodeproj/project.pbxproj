@@ -99,12 +99,19 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		AF40CF9029B6117000B5BDA3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AF69A213283D810D007428F0 /* UIColorExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		AF69A217283D9098007428F0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				AFFCF0BB2840D652004435E5 /* Mode.swift */,
 				AFFCF0BD2840D681004435E5 /* StepMode.swift */,
-				AF69A213283D810D007428F0 /* UIColorExtension.swift */,
 				AFFCF0AF283FBE87004435E5 /* Referee.swift */,
 			);
 			path = Utilities;
@@ -179,6 +186,7 @@
 				AF69A218283D90B4007428F0 /* Models */,
 				AFFCF0B3283FC13F004435E5 /* State */,
 				AF69A229283D9230007428F0 /* View Controllers */,
+				AF40CF9029B6117000B5BDA3 /* Helpers */,
 				AFB8721F283D66CA0010D824 /* Assets.xcassets */,
 				AFB87224283D66CA0010D824 /* Info.plist */,
 			);

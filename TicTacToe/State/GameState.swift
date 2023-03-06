@@ -8,6 +8,7 @@
 import Foundation
 
 protocol GameState {
+    
     var isCompleted: Bool { get }
     
     func begin()

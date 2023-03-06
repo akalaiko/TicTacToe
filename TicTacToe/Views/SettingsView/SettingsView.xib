@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,43 +23,43 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVE-Hk-z30">
-                    <rect key="frame" x="145" y="44" width="124.5" height="34.5"/>
+                    <rect key="frame" x="144.66666666666666" y="0.0" width="124.66666666666666" height="34.666666666666664"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On 3x3 you need 3 in a row to win. On 7x7 you need 4." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="on9-UP-2B3">
-                    <rect key="frame" x="73" y="276.5" width="268" height="14"/>
+                    <rect key="frame" x="73" y="232.33333333333334" width="268" height="14"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER #1 Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5F-yt-UXC">
-                    <rect key="frame" x="150" y="98.5" width="114" height="18"/>
+                    <rect key="frame" x="150.33333333333334" y="54.666666666666664" width="113.66666666666666" height="17.999999999999993"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER #2 Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="369-iQ-Fny">
-                    <rect key="frame" x="150" y="155.5" width="114" height="18"/>
+                    <rect key="frame" x="150.33333333333334" y="111.33333333333333" width="113.66666666666666" height="17.999999999999986"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field size:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-fu-5YK">
-                    <rect key="frame" x="175.5" y="222.5" width="63.5" height="18"/>
+                    <rect key="frame" x="175.33333333333334" y="178.33333333333334" width="63.333333333333343" height="18"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark placement mode:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-w1-hDJ">
-                    <rect key="frame" x="133.5" y="305.5" width="147" height="18"/>
+                    <rect key="frame" x="133.66666666666669" y="261.33333333333331" width="146.66666666666669" height="18"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="13"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K04-qF-sV5">
-                    <rect key="frame" x="103.5" y="245.5" width="207" height="27"/>
+                    <rect key="frame" x="103.66666666666669" y="201.33333333333334" width="207" height="27"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="K04-qF-sV5" secondAttribute="height" multiplier="8:1" id="AkE-YV-hP1"/>
                     </constraints>
@@ -68,7 +69,7 @@
                     </segments>
                 </segmentedControl>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sce-tP-nPx">
-                    <rect key="frame" x="103.5" y="328.5" width="207" height="26.5"/>
+                    <rect key="frame" x="103.66666666666669" y="284.33333333333331" width="207" height="27"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="sce-tP-nPx" secondAttribute="height" multiplier="8:1" id="fqU-Vu-bdU"/>
                     </constraints>
@@ -78,7 +79,7 @@
                     </segments>
                 </segmentedControl>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLAYER #1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7m-Cr-uYl">
-                    <rect key="frame" x="62" y="121.5" width="290" height="29"/>
+                    <rect key="frame" x="62" y="77.666666666666671" width="290" height="28.666666666666671"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="L7m-Cr-uYl" secondAttribute="height" multiplier="10:1" id="cP3-Ho-wHh"/>
                     </constraints>
@@ -86,7 +87,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PLAYER #2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNp-NM-gOA">
-                    <rect key="frame" x="62" y="178.5" width="290" height="29"/>
+                    <rect key="frame" x="62" y="134.33333333333334" width="290" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="KNp-NM-gOA" secondAttribute="height" multiplier="10:1" id="6vH-3f-VTH"/>
                     </constraints>
@@ -94,14 +95,14 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ic5-xF-qVw">
-                    <rect key="frame" x="62" y="359" width="290" height="41"/>
+                    <rect key="frame" x="62" y="315.33333333333331" width="290" height="41"/>
                     <string key="text">Choose game mode: 1 mark per move or 5. Marks will be placed in order you put them player by player. You can step on other player's mark, it will override it.</string>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-dK-BxE">
-                    <rect key="frame" x="103.5" y="425" width="207" height="34.5"/>
+                    <rect key="frame" x="103.66666666666669" y="381.33333333333331" width="207" height="34.333333333333314"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Cdc-dK-BxE" secondAttribute="height" multiplier="6:1" id="Tyz-tI-AOc"/>
                     </constraints>
@@ -119,7 +120,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq3-AK-aEy">
-                    <rect key="frame" x="103.5" y="464.5" width="207" height="34.5"/>
+                    <rect key="frame" x="103.66666666666669" y="420.66666666666669" width="207" height="34.666666666666686"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="lq3-AK-aEy" secondAttribute="height" multiplier="6:1" id="ps1-x9-bfH"/>
                     </constraints>
@@ -178,29 +179,5 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="259.82142857142856"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="PXr-S5-TNu">
-            <rect key="frame" x="0.0" y="0.0" width="207" height="34.5"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-            <state key="normal" title="Button">
-                <attributedString key="attributedTitle">
-                    <fragment content="WITH FRIEND">
-                        <attributes>
-                            <font key="NSFont" size="12" name="AvenirNext-Bold"/>
-                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                        </attributes>
-                    </fragment>
-                </attributedString>
-            </state>
-            <buttonConfiguration key="configuration" style="tinted" title="BACK" cornerStyle="large">
-                <backgroundConfiguration key="background" strokeWidth="5">
-                    <color key="backgroundColor" red="0.92156863209999995" green="0.89803922179999995" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </backgroundConfiguration>
-                <fontDescription key="titleFontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="16"/>
-            </buttonConfiguration>
-            <point key="canvasLocation" x="-162" y="514"/>
-        </button>
     </objects>
 </document>

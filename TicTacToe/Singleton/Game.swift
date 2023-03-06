@@ -7,24 +7,23 @@
 
 import Foundation
 
-class Game {
+final class Game {
     
     static let shared = Game()
+    private init() {}
     
     var mode: Mode = .twoPlayers
     var stepMode: StepMode = .onePerMove
-    var fieldSize: Int = 3 {
+    var fieldSize = 3 {
         didSet {
             GameboardSize.columns = fieldSize
             GameboardSize.rows = fieldSize
         }
     }
-    var playerOneName: String = "PLAYER #1"
-    var playerTwoName: String = "PLAYER #2"
+    var playerOneName = "PLAYER #1"
+    var playerTwoName = "PLAYER #2"
     
-    private init() {}
-    
-    func description() -> String{
+    func description() -> String {
         return "fieldSize: \(fieldSize), mode: \(mode), stepMode: \(stepMode), players: \(playerOneName), \(playerTwoName)"
     }
     

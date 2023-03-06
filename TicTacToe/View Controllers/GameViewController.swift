@@ -172,7 +172,7 @@ final class GameViewController: UIViewController {
         switch Game.shared.stepMode {
         case .fivePerMove:
             guard let stepInvoker = stepInvoker else { return }
-
+            
             let delay: Double = stepInvoker.commands.count < 6 ? 3 : 5
             DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: { [self] in
                 for _ in 0..<5 { aiMove() }

@@ -1,14 +1,13 @@
 //
 //  XView.swift
-//  XO-game
+//  TicTacToe
 //
-//  Created by Evgeny Kireev on 26/02/2019.
-//  Copyright © 2019 plasmon. All rights reserved.
+//  Created by Tim on 27.05.2022.
 //
 
 import UIKit
 
-public class XView: MarkView {
+final class XView: MarkView {
     
     internal override func updateMark() {
         super.updateMark()

@@ -11,14 +11,14 @@ protocol Command: AnyObject {
     func execute(delay: Double)
 }
 
-class StepCommand: Command {
+final class StepCommand: Command {
     
     private var player: Player
     private var position: GameboardPosition
     private var markViewPrototype: MarkView
     private(set) weak var gameboard: Gameboard?
     private(set) weak var gameboardView: GameboardView?
-    private var referee: Referee?
+    private let referee: Referee?
     
     
     init(position: GameboardPosition, player: Player, gameboard: Gameboard, gameboardView: GameboardView,
@@ -44,7 +44,6 @@ class StepCommand: Command {
                 gameboardView.removeMarkView(at: self.position)
                 gameboardView.placeMarkView(self.markViewPrototype.copy(), at: self.position)
             }
-            
         }
     }
 }

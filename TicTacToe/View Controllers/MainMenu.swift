@@ -7,8 +7,7 @@
 
 import UIKit
 
-class MainMenu: UIViewController, SettingsViewDelegate {
-    
+final class MainMenu: UIViewController, SettingsViewDelegate {
     
     @IBOutlet var settingsView: SettingsView!
     
@@ -27,7 +26,6 @@ class MainMenu: UIViewController, SettingsViewDelegate {
         default :
             return
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +37,6 @@ class MainMenu: UIViewController, SettingsViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsView.delegate = self
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +46,6 @@ class MainMenu: UIViewController, SettingsViewDelegate {
             case 1: Game.shared.fieldSize = 7
             default: Game.shared.fieldSize = 7
             }
-            
             switch settingsView.markPlacementModeSegmentedControl.selectedSegmentIndex {
             case 0: Game.shared.stepMode = .onePerMove
             case 1: Game.shared.stepMode = .fivePerMove
@@ -69,7 +65,5 @@ class MainMenu: UIViewController, SettingsViewDelegate {
         settingsView.isHidden = true
         performSegue(withIdentifier: "goToGame", sender: nil)
     }
-
-
 }
 

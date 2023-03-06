@@ -1,16 +1,13 @@
 //
 //  Referee.swift
-//  XO-game
+//  TicTacToe
 //
-//  Created by Evgeny Kireev on 26/02/2019.
-//  Copyright © 2019 plasmon. All rights reserved.
+//  Created by Tim on 27.05.2022.
 //
 
 import Foundation
 
-// needs refactoring
-
-public final class Referee {
+final class Referee {
     
     // MARK: - Properties
     

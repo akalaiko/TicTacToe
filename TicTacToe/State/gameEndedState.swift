@@ -44,6 +44,5 @@ class gameEndedState: GameState {
     
     func addMark(at position: GameboardPosition) {}
     
-    func addAIMark() {
-    }
+    func addAIMark() {}
 }

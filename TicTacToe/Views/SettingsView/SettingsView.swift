@@ -11,7 +11,7 @@ protocol SettingsViewDelegate: AnyObject {
     func goToGame()
 }
 
-class SettingsView: UIView, SettingsViewDelegate {
+final class SettingsView: UIView, SettingsViewDelegate {
     
     weak var delegate: SettingsViewDelegate?
     @IBOutlet var contentView: UIView!

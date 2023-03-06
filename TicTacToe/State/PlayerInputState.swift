@@ -30,7 +30,6 @@ class PlayerInputState: GameState {
     }
     
     func begin() {
-        
         switch player {
         case .first:
             gameViewController?.infoLabel.text = "\(Game.shared.playerOneName.uppercased()), it's your turn!"
